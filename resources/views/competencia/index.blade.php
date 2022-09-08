@@ -21,7 +21,7 @@
                                     <tr>
                                         <th scope="row">{{ $competencia->id }}</th>
                                         <td>{{ $competencia->descripcion }}</td>
-                                        <td>{{ $competnecia->activo }}</td>
+                                        <td>{{ $competencia->activo }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

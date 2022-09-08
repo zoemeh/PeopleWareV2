@@ -36,6 +36,11 @@ class CompetenciaController extends Controller
      */
     public function store(StoreCompetenciaRequest $request)
     {
+        $competencia = new Competencia();
+        $competencia->descripcion = $request->descripcion;
+        $competencia->activo = is_null($request->activo) ? false : $request->activo;
+        $competencia->save();
+        notify()->success('Competencia creada.');
         return redirect()->route("competencias.index");
     }
 
