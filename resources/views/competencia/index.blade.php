@@ -4,8 +4,8 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header d-flex">
-                    <span class="p-2 d-inline flex-grow-1">{{ __('Competencias') }}</span>
-                    <a href="{{ route('competencias.create') }}" class="p-2 btn btn-primary">Crear</a>
+                        <span class="p-2 d-inline flex-grow-1">{{ __('Competencias') }}</span>
+                        <a href="{{ route('competencias.create') }}" class="p-2 btn btn-primary">Crear</a>
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -14,6 +14,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Descripcion</th>
                                     <th scope="col">Activo</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -22,6 +23,18 @@
                                         <th scope="row">{{ $competencia->id }}</th>
                                         <td>{{ $competencia->descripcion }}</td>
                                         <td>{{ $competencia->activo }}</td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a type="button" class="btn btn-primary"
+                                                    href="{{ route('competencias.edit', $competencia->id) }}">Editar</a>
+                                                <form action="{{ route('competencias.destroy', $competencia->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger" type="submit">Borrar</button>
+                                                </form>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

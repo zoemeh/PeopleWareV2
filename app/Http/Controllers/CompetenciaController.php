@@ -15,7 +15,7 @@ class CompetenciaController extends Controller
      */
     public function index()
     {
-        return view('competencia.index')->with('competencias', Competencia::all());
+        return view('competencia.index')->with('competencias', Competencia::orderBy('id')->get());
     }
 
     /**
@@ -25,7 +25,7 @@ class CompetenciaController extends Controller
      */
     public function create()
     {
-        return view('competencia.create');
+        return view('competencia.create')->with('competencia', new Competencia());
     }
 
     /**
@@ -40,7 +40,11 @@ class CompetenciaController extends Controller
         $competencia->descripcion = $request->descripcion;
         $competencia->activo = is_null($request->activo) ? false : $request->activo;
         $competencia->save();
-        notify()->success('Competencia creada.');
+        if ($competencia->save()) {
+            notify()->success('Competencia creada.');
+        } else {
+            notify()->error('Competencia no creada.');
+        }
         return redirect()->route("competencias.index");
     }
 
@@ -63,7 +67,7 @@ class CompetenciaController extends Controller
      */
     public function edit(Competencia $competencia)
     {
-        //
+        return view('competencia.edit')->with('competencia', $competencia);
     }
 
     /**
@@ -75,7 +79,14 @@ class CompetenciaController extends Controller
      */
     public function update(UpdateCompetenciaRequest $request, Competencia $competencia)
     {
-        //
+        $competencia->descripcion = $request->descripcion;
+        $competencia->activo = is_null($request->activo) ? false : $request->activo;
+        if ($competencia->save()) {
+            notify()->success('Competencia modificada.');
+        } else {
+            notify()->error('Competencia no modificada.');
+        }
+        return redirect()->route("competencias.index");
     }
 
     /**
@@ -86,6 +97,11 @@ class CompetenciaController extends Controller
      */
     public function destroy(Competencia $competencia)
     {
-        //
+        if (Competencia::destroy($competencia->id) == 0) {
+            notify()->error('Competencia no borrada.');
+        } else {
+            notify()->success('Competencia borrada.');
+        }
+        return redirect()->route("competencias.index");
     }
 }
