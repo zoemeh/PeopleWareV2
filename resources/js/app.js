@@ -1,3 +1,4 @@
-import './bootstrap';
+//import './bootstrap';
+import('preline');  
 
 console.log("alive");

@@ -56,7 +56,7 @@ class CompetenciaController extends Controller
      */
     public function show(Competencia $competencia)
     {
-        //
+        return view('competencia.show')->with('competencia', $competencia);
     }
 
     /**
