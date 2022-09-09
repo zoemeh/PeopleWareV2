@@ -18,3 +18,4 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::resource('/competencias', App\Http\Controllers\CompetenciaController::class)->middleware('auth');
 Route::resource('/idiomas', App\Http\Controllers\IdiomaController::class)->middleware('auth');
 Route::resource('/capacitaciones', App\Http\Controllers\CapacitacionController::class)->middleware('auth');
+Route::resource('/departamentos', App\Http\Controllers\DepartamentoController::class)->middleware('auth');

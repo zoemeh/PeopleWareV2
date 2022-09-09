@@ -26,7 +26,6 @@ class IdiomaController extends Controller
     public function create()
     {
         return view('idioma.create')->with('idioma', new Idioma());
-
     }
 
     /**

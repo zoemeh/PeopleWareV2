@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             AdminUserSeeder::class,
             CapacitacionSeeder::class,
             CompetenciaSeeder::class,
-            IdiomaSeeder::class
+            IdiomaSeeder::class,
+            DepartamentoSeeder::class
         ]);
     }
 }
