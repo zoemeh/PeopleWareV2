@@ -24,16 +24,19 @@
                                         <td>{{ $competencia->descripcion }}</td>
                                         <td>{{ $competencia->activo }}</td>
                                         <td>
-                                            <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-primary"
-                                                    href="{{ route('competencias.edit', $competencia->id) }}">Editar</a>
-                                                <form action="{{ route('competencias.destroy', $competencia->id) }}"
-                                                    method="post">
-                                                    @csrf
-                                                    @method('DELETE')
+
+                                            <form class="d-inline"
+                                                action="{{ route('competencias.destroy', $competencia->id) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <div class="btn-group" role="group">
+                                                    <a type="button" class="btn btn-primary"
+                                                        href="{{ route('competencias.edit', $competencia->id) }}">Editar</a>
                                                     <button class="btn btn-danger" type="submit">Borrar</button>
-                                                </form>
-                                            </div>
+                                                </div>
+
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
