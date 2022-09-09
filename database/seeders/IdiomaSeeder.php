@@ -17,19 +17,27 @@ class IdiomaSeeder extends Seeder
     {
         DB::table('idiomas')->insert([
             'descripcion' => 'Español',
-            'activo' => true
+            'activo' => true,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
         DB::table('idiomas')->insert([
             'descripcion' => 'Ingles',
-            'activo' => true
+            'activo' => true,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
         DB::table('idiomas')->insert([
             'descripcion' => 'Aleman',
-            'activo' => true
+            'activo' => true,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
         DB::table('idiomas')->insert([
             'descripcion' => 'Frances',
-            'activo' => true
+            'activo' => true,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
     }
 }

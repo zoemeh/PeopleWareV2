@@ -17,19 +17,27 @@ class DepartamentoSeeder extends Seeder
     {
         DB::table('departamentos')->insert([
             'descripcion' => 'IT',
-            'activo' => true
+            'activo' => true,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
         DB::table('departamentos')->insert([
             'descripcion' => 'Finanzas',
-            'activo' => true
+            'activo' => true,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
         DB::table('departamentos')->insert([
             'descripcion' => 'Recursos Humanos',
-            'activo' => true
+            'activo' => true,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
         DB::table('departamentos')->insert([
             'descripcion' => 'Mercadeo',
-            'activo' => true
+            'activo' => true,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
     }
 }

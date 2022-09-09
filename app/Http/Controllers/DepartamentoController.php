@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoredepartamentoRequest;
 use App\Http\Requests\UpdatedepartamentoRequest;
-use App\Models\departamento;
+use App\Models\Departamento;
 
 class DepartamentoController extends Controller
 {
@@ -40,9 +40,9 @@ class DepartamentoController extends Controller
         $departamento->descripcion = $request->descripcion;
         $departamento->activo = is_null($request->activo) ? false : $request->activo;
         if ($departamento->save()) {
-            notify()->success('departamento creado.');
+            notify()->success('Departamento creado.');
         } else {
-            notify()->error('departamento no creado.');
+            notify()->error('Departamento no creado.');
         }
         return redirect()->route("departamentos.index");
     }
@@ -50,10 +50,10 @@ class DepartamentoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\departamento  $departamento
+     * @param  \App\Models\Departamento  $Departamento
      * @return \Illuminate\Http\Response
      */
-    public function show(departamento $departamento)
+    public function show(Departamento $Departamento)
     {
         //
     }
@@ -61,10 +61,10 @@ class DepartamentoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\departamento  $departamento
+     * @param  \App\Models\Departamento  $Departamento
      * @return \Illuminate\Http\Response
      */
-    public function edit(departamento $departamento)
+    public function edit(Departamento $departamento)
     {
         return view('departamento.edit')->with('departamento', $departamento);
     }
@@ -73,10 +73,10 @@ class DepartamentoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdatedepartamentoRequest  $request
-     * @param  \App\Models\departamento  $departamento
+     * @param  \App\Models\Departamento  $Departamento
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatedepartamentoRequest $request, departamento $departamento)
+    public function update(UpdatedepartamentoRequest $request, Departamento $departamento)
     {
         $departamento->descripcion = $request->descripcion;
         $departamento->activo = is_null($request->activo) ? false : $request->activo;
@@ -91,10 +91,10 @@ class DepartamentoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\departamento  $departamento
+     * @param  \App\Models\Departamento  $Departamento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(departamento $departamento)
+    public function destroy(Departamento $departamento)
     {
         if (Departamento::destroy($departamento->id) == 0) {
             notify()->error('Departamento no borrado.');

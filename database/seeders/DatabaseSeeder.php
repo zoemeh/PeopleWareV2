@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             CapacitacionSeeder::class,
             CompetenciaSeeder::class,
             IdiomaSeeder::class,
-            DepartamentoSeeder::class
+            DepartamentoSeeder::class,
+            PuestoSeeder::class
         ]);
     }
 }

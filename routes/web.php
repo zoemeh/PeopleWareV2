@@ -19,3 +19,4 @@ Route::resource('/competencias', App\Http\Controllers\CompetenciaController::cla
 Route::resource('/idiomas', App\Http\Controllers\IdiomaController::class)->middleware('auth');
 Route::resource('/capacitaciones', App\Http\Controllers\CapacitacionController::class)->middleware('auth');
 Route::resource('/departamentos', App\Http\Controllers\DepartamentoController::class)->middleware('auth');
+Route::resource('/puestos', App\Http\Controllers\PuestoController::class)->middleware('auth');

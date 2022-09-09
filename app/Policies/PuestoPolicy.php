@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
+use App\Models\Puesto;
 use App\Models\User;
-use App\Models\Departamento;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class DepartamentoPolicy
+class PuestoPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class DepartamentoPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Departamento  $Departamento
+     * @param  \App\Models\Puesto  $puesto
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Departamento $Departamento)
+    public function view(User $user, Puesto $puesto)
     {
         //
     }
@@ -48,10 +48,10 @@ class DepartamentoPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Departamento  $Departamento
+     * @param  \App\Models\Puesto  $puesto
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Departamento $Departamento)
+    public function update(User $user, Puesto $puesto)
     {
         //
     }
@@ -60,10 +60,10 @@ class DepartamentoPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Departamento  $Departamento
+     * @param  \App\Models\Puesto  $puesto
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Departamento $Departamento)
+    public function delete(User $user, Puesto $puesto)
     {
         //
     }
@@ -72,10 +72,10 @@ class DepartamentoPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Departamento  $Departamento
+     * @param  \App\Models\Puesto  $puesto
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Departamento $Departamento)
+    public function restore(User $user, Puesto $puesto)
     {
         //
     }
@@ -84,10 +84,10 @@ class DepartamentoPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Departamento  $Departamento
+     * @param  \App\Models\Puesto  $puesto
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Departamento $Departamento)
+    public function forceDelete(User $user, Puesto $puesto)
     {
         //
     }

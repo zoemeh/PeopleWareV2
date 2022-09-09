@@ -17,19 +17,27 @@ class CompetenciaSeeder extends Seeder
     {
         DB::table('competencias')->insert([
             'descripcion' => 'Manejor de Recursos Humanos',
-            'activo' => true
+            'activo' => true,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
         DB::table('competencias')->insert([
             'descripcion' => 'Uso de Herramientas Ofimaticas',
-            'activo' => true
+            'activo' => true,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
         DB::table('competencias')->insert([
             'descripcion' => 'Gestion de Presupusto',
-            'activo' => true
+            'activo' => true,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
         DB::table('competencias')->insert([
             'descripcion' => 'Hablar en publico',
-            'activo' => true
+            'activo' => true,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
     }
 }
