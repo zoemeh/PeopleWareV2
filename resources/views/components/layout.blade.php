@@ -25,7 +25,7 @@
                 </a>
                 <a class="font-medium {{ request()->routeIs('idiomas.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
                     href="{{ route('idiomas.index') }}">Idiomas</a>
-                <a class="font-medium {{ request()->routeIs('capactitaciones.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                <a class="font-medium {{ request()->routeIs('capacitaciones.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
                     href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
                 <a class="font-medium {{ request()->routeIs('departamentos.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
                     href="{{ route('departamentos.index') }}">Departamentos</a>
