@@ -40,7 +40,6 @@ class IdiomaController extends Controller
         $idioma = new Idioma();
         $idioma->descripcion = $request->descripcion;
         $idioma->activo = is_null($request->activo) ? false : $request->activo;
-        $idioma->save();
         if ($idioma->save()) {
             notify()->success('Idioma creado.');
         } else {

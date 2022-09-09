@@ -15,7 +15,7 @@ class CapacitacionController extends Controller
      */
     public function index()
     {
-        //
+        return view("capacitacion.index")->with("capacitaciones", Capacitacion::orderBy('id')->get());
     }
 
     /**
@@ -25,7 +25,7 @@ class CapacitacionController extends Controller
      */
     public function create()
     {
-        //
+        return view("capacitacion.create")->with("capacitacion", new Capacitacion());
     }
 
     /**
@@ -36,7 +36,13 @@ class CapacitacionController extends Controller
      */
     public function store(StoreCapacitacionRequest $request)
     {
-        //
+        $capacitacion = new Capacitacion();
+        if ($capacitacion->save()) {
+            notify()->success('Capacitacion creada.');
+        } else {
+            notify()->error('Capacitacion no creada.');
+        }
+        return redirect()->route("capacitiones.index");
     }
 
     /**
@@ -58,7 +64,7 @@ class CapacitacionController extends Controller
      */
     public function edit(Capacitacion $capacitacion)
     {
-        //
+        return view('capacitacion.edit')->with('capacitacion', $capacitacion);
     }
 
     /**
@@ -70,7 +76,13 @@ class CapacitacionController extends Controller
      */
     public function update(UpdateCapacitacionRequest $request, Capacitacion $capacitacion)
     {
-        //
+        //TODO: 
+        if ($capacitacion->save()) {
+            notify()->success('Capacitacion modificada.');
+        } else {
+            notify()->error('Capacitacion no modificada.');
+        }
+        return redirect()->route("capacitiones.index");
     }
 
     /**
@@ -81,6 +93,11 @@ class CapacitacionController extends Controller
      */
     public function destroy(Capacitacion $capacitacion)
     {
-        //
+        if (Capacitacion::destroy($capacitacion->id) == 0) {
+            notify()->error('Capacitacion no borrada.');
+        } else {
+            notify()->success('Capacitacion borrada.');
+        }
+        return redirect()->route("capacitaciones.index");
     }
 }

@@ -4,16 +4,18 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class capacticacion.form extends Component
+class IdiomaForm extends Component
 {
+
+    public $idioma;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($idioma)
     {
-        //
+        $this->idioma = $idioma;
     }
 
     /**
@@ -23,6 +25,6 @@ class capacticacion.form extends Component
      */
     public function render()
     {
-        return view('components.capacticacion.form');
+        return view('components.idioma-form');
     }
 }

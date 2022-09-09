@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('capacitaciones', function (Blueprint $table) {
             $table->id();
             $table->string("descripcion");
-            $table->enum('difficulty', ['grado', 'postgrado', 'doctorado', 'tecnico', 'gestion']);
+            $table->enum('nivel', ['grado', 'postgrado', 'doctorado', 'tecnico', 'gestion']);
             $table->date("desde");
             $table->date("hasta");
             $table->string("institucion");
