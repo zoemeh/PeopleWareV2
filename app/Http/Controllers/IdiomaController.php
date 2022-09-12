@@ -55,7 +55,7 @@ class IdiomaController extends Controller
      */
     public function show(Idioma $idioma)
     {
-        //
+        return view('idioma.show')->with('idioma', $idioma);
     }
 
     /**

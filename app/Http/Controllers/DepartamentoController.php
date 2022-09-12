@@ -53,9 +53,9 @@ class DepartamentoController extends Controller
      * @param  \App\Models\Departamento  $Departamento
      * @return \Illuminate\Http\Response
      */
-    public function show(Departamento $Departamento)
+    public function show(Departamento $departamento)
     {
-        //
+        return view("departamento.show")->with("departamento", $departamento);
     }
 
     /**
