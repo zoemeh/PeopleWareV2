@@ -15,7 +15,7 @@ class IdiomaController extends Controller
      */
     public function index()
     {
-        return view('idioma.index')->with('idiomas', Idioma::orderBy('id')->get());
+        return view('idioma.index')->with('idiomas', Idioma::orderBy('id')->get())->with('idioma', new Idioma());
     }
 
     /**

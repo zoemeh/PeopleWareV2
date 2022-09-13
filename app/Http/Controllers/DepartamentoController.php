@@ -15,7 +15,7 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        return view('departamento.index')->with('departamentos', Departamento::orderBy('id')->get());
+        return view('departamento.index')->with('departamentos', Departamento::orderBy('id')->get())->with('departamento', new Departamento());
     }
 
     /**

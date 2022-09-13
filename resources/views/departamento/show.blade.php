@@ -1,3 +1,3 @@
 <x-layout>
-    <x-simple-show :record="$departamento" resource="departamentos"/>
+    <livewire:simple-show :record="$departamento" resource="departamentos"/>
 </x-layout>

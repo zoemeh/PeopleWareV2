@@ -33,6 +33,11 @@
   resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.6.tgz"
   integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
 
+"@preline/overlay@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@preline/overlay/-/overlay-1.2.0.tgz#4a35985f9b8f5e76344ba06b3b66e7a5e06bbab1"
+  integrity sha512-fv0UhtH4Cu56xnbX39NF8DbEfFDDrLuxJpiGLwmwt9XB+ZKSZwWXBjV59ZRslUf7S4gR48sUST+mGdYGtu1nZw==
+
 "@tailwindcss/forms@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.3.tgz#e4d7989686cbcaf416c53f1523df5225332a86e7"

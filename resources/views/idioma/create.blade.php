@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <x-idioma-form :idioma="$idioma"/>
+                <livewire:simple-form :record="$idioma" resource="idiomas"/>
             </div>
         </div>
     </div>

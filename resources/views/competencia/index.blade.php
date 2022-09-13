@@ -1,3 +1,3 @@
 <x-layout>
-    <x-data-table :records="$competencias" :columns="['id', 'descripcion', 'activo']" :resource="'competencias'" />
+    <livewire:simple-table :records="$competencias" :columns="['id', 'descripcion', 'activo']" :resource="'competencias'" :currentRecord="$competencia" />
 </x-layout>

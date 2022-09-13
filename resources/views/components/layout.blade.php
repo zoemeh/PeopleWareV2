@@ -11,12 +11,16 @@
     <title>PeopleWare</title>
 
     <!-- Scripts -->
+    @livewireStyles
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @notifyCss
-    @livewireStyles
+
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </head>
 
 <body class="dark:bg-gray-800">
+    @livewire('livewire-ui-modal')
     <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4 dark:bg-gray-800">
         <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
             <a class="flex-none text-xl font-semibold" href="{{ route('home') }}">PeopleWare</a>
@@ -32,6 +36,10 @@
                     href="{{ route('departamentos.index') }}">Departamentos</a>
                 <a class="font-medium {{ request()->routeIs('puestos.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
                     href="{{ route('puestos.index') }}">Puestos</a>
+                    <a class="font-medium {{ request()->routeIs('puestos.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                    href="{{ route('puestos.index') }}">Candidatos</a>
+                    <a class="font-medium {{ request()->routeIs('puestos.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                    href="{{ route('puestos.index') }}">Empleados</a>
             </div>
         </nav>
     </header>
@@ -39,7 +47,7 @@
         <x:notify-messages />
         {{ $slot }}
     </div>
-    @notifyJs
+    <livewire:confirm-delete />
     @livewireScripts
 </body>
 

@@ -15,7 +15,7 @@ class CompetenciaController extends Controller
      */
     public function index()
     {
-        return view('competencia.index')->with('competencias', Competencia::orderBy('id')->get());
+        return view('competencia.index')->with('competencias', Competencia::orderBy('id')->get())->with('competencia', new Competencia());
     }
 
     /**
