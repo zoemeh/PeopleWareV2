@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('candidatos', function (Blueprint $table) {
+        Schema::create('capacitaciones', function (Blueprint $table) {
             $table->id();
+            $table->string("descripcion");
+            $table->enum('nivel', ['grado', 'postgrado', 'doctorado', 'tecnico', 'gestion']);
+            $table->date("desde");
+            $table->date("hasta");
+            $table->string("institucion");
             $table->foreignId('persona_id')->constrained('personas')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreignId('puesto_id')->constrained('puestos')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->double('salario_deseado', 8, 2);
-            $table->string('recomendado_por');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('candidatos');
+        Schema::dropIfExists('capacitaciones');
     }
 };

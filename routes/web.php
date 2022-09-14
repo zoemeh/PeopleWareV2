@@ -21,3 +21,4 @@ Route::resource('/capacitaciones', App\Http\Controllers\CapacitacionController::
 Route::resource('/departamentos', App\Http\Controllers\DepartamentoController::class)->middleware('auth');
 Route::resource('/puestos', App\Http\Controllers\PuestoController::class)->middleware('auth');
 Route::resource('/candidatos', App\Http\Controllers\CandidatoController::class)->middleware('auth');
+Route::resource('/empleados', App\Http\Controllers\EmpleadoController::class)->middleware('auth');

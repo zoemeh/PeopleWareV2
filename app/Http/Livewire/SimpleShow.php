@@ -8,7 +8,7 @@ class SimpleShow extends Component
 {
 
     public $record;
-    public $resource;
+    public string $resource;
     
     public function render()
     {

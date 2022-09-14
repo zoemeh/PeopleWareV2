@@ -4,16 +4,21 @@ namespace App\Http\Livewire;
 
 use App\Models\Puesto;
 use Livewire\Component;
+use Illuminate\Database\Eloquent\Collection;
 
 class PuestosTable extends Component
 {
-    public $puestos;
-    public $formVisible = false;
-    public $currentPuesto;
+    public Collection  $puestos;
+    public bool $formVisible = false;
+    public Puesto $currentPuesto;
 
     protected $listeners = ['recordChanged' => '$refresh', 'recordSaved' => 'recordSaved', 'closeForm' => 'closeForm'];
 
-
+    public function mount()
+    {
+        $this->currentPuesto = new Puesto();
+        $this->puestos = Puesto::orderBy("created_at")->get();
+    }
     public function render()
     {
         return view('livewire.puestos-table');

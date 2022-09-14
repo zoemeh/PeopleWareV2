@@ -1,3 +1,3 @@
 <x-layout>
-    <livewire:candidatos-table :candidatos="$candidatos" />
+    <livewire:candidatos-table />
 </x-layout>

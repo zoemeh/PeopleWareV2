@@ -5,12 +5,15 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Puesto;
 use App\Models\Departamento;
+use Illuminate\Database\Eloquent\Collection;
 
 class PuestoForm extends Component
 {
     public Puesto $puesto;
     protected $listeners = ['recordChanged' => 'refreshRecord'];
-    public $departamentos;
+    public Collection $departamentos;
+
+
     public function render()
     {
         return view('livewire.puesto-form');

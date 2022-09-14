@@ -13,17 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('puestos', function (Blueprint $table) {
+        Schema::create('empleados', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->enum('riesgo', ['bajo', 'medio', 'alto']);
-            $table->double('salario_minimo', 8, 2);
-            $table->double('salario_maximo', 8, 2);
+            $table->date("desde");
+            $table->double('salario', 8, 2);
             $table->boolean('activo');
-            $table->foreignId('departamento_id')->constrained('departamentos')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('empleado_id')->nullable()->constrained('empleados')
+            $table->foreignId('persona_id')->constrained('personas')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->timestamps();
@@ -37,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('puestos');
+        Schema::dropIfExists('empleados');
     }
 };

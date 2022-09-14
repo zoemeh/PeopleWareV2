@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('capacitaciones', function (Blueprint $table) {
+        Schema::create('experiencias', function (Blueprint $table) {
             $table->id();
-            $table->string("descripcion");
-            $table->enum('nivel', ['grado', 'postgrado', 'doctorado', 'tecnico', 'gestion']);
+            $table->string('empresa');
+            $table->string('puesto');
             $table->date("desde");
             $table->date("hasta");
-            $table->string("institucion");
-            $table->foreignId('candidato_id')->constrained('candidatos')
+            $table->double('salario', 8, 2);
+            $table->foreignId('persona_id')->constrained('personas')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->timestamps();
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('capacitaciones');
+        Schema::dropIfExists('experiencias');
     }
 };

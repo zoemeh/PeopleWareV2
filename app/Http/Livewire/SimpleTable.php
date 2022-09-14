@@ -3,13 +3,14 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Illuminate\Database\Eloquent\Collection;
 
 class SimpleTable extends Component
 {
-    public $records;
-    public $columns;
-    public $resource;
-    public $formVisible = false;
+    public Collection $records;
+    public array $columns;
+    public string $resource;
+    public bool $formVisible = false;
     public $currentRecord;
 
     protected $listeners = ['recordChanged' => '$refresh', 'recordSaved' => 'recordSaved', 'closeForm' => 'closeForm'];

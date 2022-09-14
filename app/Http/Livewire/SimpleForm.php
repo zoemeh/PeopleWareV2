@@ -19,13 +19,14 @@ class SimpleForm extends Component
 
     public function save()
     {
+        // FIXME: competencias not saving when validate is active
         $this->validate();
-
         if ($this->record->save()) {
             $this->emit("recordSaved");
         } else {
 
         }
+        $this->record->activo = is_null($this->record->activo) ? false : true;
     }
     
     public function render()

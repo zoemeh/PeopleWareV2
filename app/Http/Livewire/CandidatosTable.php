@@ -7,13 +7,17 @@ use App\Models\Candidato;
 
 class CandidatosTable extends Component
 {
-    public $formVisible = false;
-    public $currentCandidato;
+    public bool $formVisible = false;
+    public Candidato $currentCandidato;
     public $candidatos;
 
     protected $listeners = ['recordChanged' => '$refresh', 'recordSaved' => 'recordSaved', 'closeForm' => 'closeForm'];
 
-
+    public function mount()
+    {
+        $this->currentCandidato = new Candidato();
+        $this->candidatos = Candidato::orderBy("created_at")->get();
+    }
     public function render()
     {
         return view('livewire.candidatos-table');

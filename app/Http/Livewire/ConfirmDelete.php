@@ -9,7 +9,7 @@ class ConfirmDelete extends Component
 {
     public string $mensaje = "";
     public string $titulo = "Borrar registro";
-    public $record_id;
+    public int $record_id;
     public string $modelClass;
     public $record;
 
