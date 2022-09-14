@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             CompetenciaSeeder::class,
             IdiomaSeeder::class,
             DepartamentoSeeder::class,
-            PuestoSeeder::class
+            PuestoSeeder::class,
+            CandidatoSeeder::class
         ]);
     }
 }

@@ -20,6 +20,9 @@ return new class extends Migration
             $table->date("desde");
             $table->date("hasta");
             $table->string("institucion");
+            $table->foreignId('candidato_id')->constrained('candidatos')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

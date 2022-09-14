@@ -9,8 +9,8 @@ class Puesto extends Model
 {
     use HasFactory;
 
-    public function Departamento()
+    public function departamento()
     {
-        return $this->belongsTo(Departamento::class, 'foreign_key');
+        return $this->belongsTo(Departamento::class);
     }
 }

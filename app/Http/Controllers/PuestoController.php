@@ -15,7 +15,7 @@ class PuestoController extends Controller
      */
     public function index()
     {
-        //
+        return view('puesto.index')->with('puestos', Puesto::orderBy("created_at")->get());
     }
 
     /**
