@@ -21,6 +21,7 @@ class CandidatoForm extends Component
         'candidato.persona_id' => 'required',
         'candidato.salario_deseado' => 'required',
         'candidato.puesto_id' => 'required',
+        'candidato.recomendado_por' => 'nullable|string',
     ];
 
     public function mount()
@@ -28,6 +29,7 @@ class CandidatoForm extends Component
         $this->puestos = Puesto::orderBy("created_at")->get();
         $this->personas = Persona::orderBy("created_at")->get();
     }
+
     public function save()
     {
         if (is_null($this->candidato->puesto_id)) {
@@ -57,6 +59,7 @@ class CandidatoForm extends Component
     {
         $this->emit("closeForm");
     }
+
     public function render()
     {
         return view('livewire.candidato-form');

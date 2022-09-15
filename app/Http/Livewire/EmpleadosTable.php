@@ -2,46 +2,46 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Empleado;
 use Livewire\Component;
-use App\Models\Candidato;
 
-class CandidatosTable extends Component
+class EmpleadosTable extends Component
 {
     public bool $formVisible = false;
-    public Candidato $currentCandidato;
-    public $candidatos;
+    public Empleado $currentEmpleado;
+    public $empleados;
 
     protected $listeners = ['recordChanged' => '$refresh', 'recordSaved' => 'recordSaved', 'closeForm' => 'closeForm'];
 
     public function mount()
     {
-        $this->currentCandidato = new Candidato();
-        $this->candidatos = Candidato::orderBy("created_at")->get();
+        $this->currentEmpleado = new Empleado();
+        $this->empleados = Empleado::orderBy("created_at")->get();
     }
 
     public function render()
     {
-        $this->candidatos = Candidato::orderBy('id')->get();
-        return view('livewire.candidatos-table');
+        $this->empleados = Empleado::orderBy('id')->get();
+        return view('livewire.empleados-table');
     }
 
     public function create()
     {
-        $this->currentCandidato =  new Candidato();
+        $this->currentEmpleado =  new Empleado();
         $this->emit("recordChanged", -1);
         $this->formVisible = true;
     }
 
-    public function update(Candidato $candidato)
+    public function update(Empleado $candidato)
     {
-        $this->currentCandidato = $candidato;
+        $this->currentEmpleado = $candidato;
         $this->formVisible = true;
-        $this->emit("recordChanged", $this->currentCandidato->id);
+        $this->emit("recordChanged", $this->currentEmpleado->id);
     }
 
     public function delete($id)
     {
-        $r = Candidato::find($id);
+        $r = Empleado::find($id);
         $r->delete();
     }
     public function recordSaved()

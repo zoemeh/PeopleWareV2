@@ -2,46 +2,45 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Persona;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
-use App\Models\Candidato;
 
-class CandidatosTable extends Component
+class PersonasTable extends Component
 {
+    public Collection $personas;
     public bool $formVisible = false;
-    public Candidato $currentCandidato;
-    public $candidatos;
+    public Persona $currentPersona;
 
     protected $listeners = ['recordChanged' => '$refresh', 'recordSaved' => 'recordSaved', 'closeForm' => 'closeForm'];
 
     public function mount()
     {
-        $this->currentCandidato = new Candidato();
-        $this->candidatos = Candidato::orderBy("created_at")->get();
+        $this->personas = Persona::orderBy("created_at")->get();
     }
-
     public function render()
     {
-        $this->candidatos = Candidato::orderBy('id')->get();
-        return view('livewire.candidatos-table');
+        $this->personas = Persona::orderBy('id')->get();
+        return view('livewire.personas-table');
     }
 
     public function create()
     {
-        $this->currentCandidato =  new Candidato();
+        $this->currentPersona = new Persona();
         $this->emit("recordChanged", -1);
         $this->formVisible = true;
     }
 
-    public function update(Candidato $candidato)
+    public function update(Persona $persona)
     {
-        $this->currentCandidato = $candidato;
+        $this->currentPersona = $persona;
         $this->formVisible = true;
-        $this->emit("recordChanged", $this->currentCandidato->id);
+        $this->emit("recordChanged", $this->currentPersona->id);
     }
 
     public function delete($id)
     {
-        $r = Candidato::find($id);
+        $r = Persona::find($id);
         $r->delete();
     }
     public function recordSaved()
@@ -51,7 +50,7 @@ class CandidatosTable extends Component
 
     public function show($id)
     {
-        return redirect()->route("candidato.show", $id);
+        return redirect()->route("persona.show", $id);
     }
 
     public function closeForm()
