@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class SimpleTable extends Component
 {
-    public Collection $records;
+    public $records;
     public array $columns;
     public string $resource;
     public bool $formVisible = false;

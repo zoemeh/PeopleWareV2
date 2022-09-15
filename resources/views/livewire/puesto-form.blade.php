@@ -24,9 +24,12 @@
                                     class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
                                 <label for="riesgo" class="block text-sm font-medium mb-2 dark:text-white">Nivel de
                                     Riesgo</label>
-                                <input type="text" id="riesgo" name="riesgo" wire:model="puesto.riesgo"
-                                    class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
-
+                                <select id="riesgo" name="riesgo" wire:model="puesto.riesgo"
+                                    class="mb-4 py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                    @foreach (['bajo', 'medio', 'alto'] as $nivel)
+                                        <option value="{{ $nivel }}">{{ str($nivel)->headline() }}</option>
+                                    @endforeach
+                                </select>
                                 <label for="salario_minimo"
                                     class="block text-sm font-medium mb-2 dark:text-white">Salario
                                     Minimo</label>
@@ -43,13 +46,19 @@
 
                                 <label for="departamento_id"
                                     class="block text-sm font-medium mb-2 dark:text-white">Departamento</label>
-                                <select id="departamento_id" name="departamento_id"
+                                <select id="departamento_id" name="departamento_id" wire:model="puesto.departamento_id"
                                     class="mb-4 py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
                                     @foreach ($departamentos as $departamento)
-                                        <option value="{{$departamento->id}}">{{ $departamento->descripcion }}</option>
+                                        <option value="{{ $departamento->id }}">{{ $departamento->descripcion }}
+                                        </option>
                                     @endforeach
                                 </select>
-
+                                <div class="flex mb-2">
+                                    <input type="checkbox" id="activo" name="activo" wire:model="puesto.activo"
+                                        class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
+                                    <label for="activo" class="text-sm text-gray-500 ml-3 dark:text-gray-400">Estado
+                                    </label>
+                                </div>
                                 <button type="submit"
                                     class="mb-2 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
                                     @if ($puesto->id)

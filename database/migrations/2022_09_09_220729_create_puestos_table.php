@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignId('departamento_id')->constrained('departamentos')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreignId('empleado_id')->nullable()->constrained('empleados')
+            $table->foreignId('empleado_id')->unique()->nullable()->constrained('empleados')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->timestamps();

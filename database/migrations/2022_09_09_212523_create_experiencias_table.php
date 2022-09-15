@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('empresa');
             $table->string('puesto');
             $table->date("desde");
-            $table->date("hasta");
+            $table->date("hasta")->nullable();
             $table->double('salario', 8, 2);
             $table->foreignId('persona_id')->constrained('personas')
                 ->onUpdate('cascade')

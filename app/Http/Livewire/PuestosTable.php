@@ -21,6 +21,7 @@ class PuestosTable extends Component
     }
     public function render()
     {
+        $this->puestos = Puesto::orderBy('id')->get();
         return view('livewire.puestos-table');
     }
 

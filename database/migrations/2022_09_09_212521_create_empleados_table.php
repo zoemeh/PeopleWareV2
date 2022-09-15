@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date("desde");
             $table->double('salario', 8, 2);
             $table->boolean('activo');
-            $table->foreignId('persona_id')->constrained('personas')
+            $table->foreignId('persona_id')->unique()->constrained('personas')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->timestamps();

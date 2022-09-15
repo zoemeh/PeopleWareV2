@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("descripcion");
             $table->enum('nivel', ['grado', 'postgrado', 'doctorado', 'tecnico', 'gestion']);
             $table->date("desde");
-            $table->date("hasta");
+            $table->date("hasta")->nullable();
             $table->string("institucion");
             $table->foreignId('persona_id')->constrained('personas')
                 ->onUpdate('cascade')

@@ -13,6 +13,14 @@ class PuestoForm extends Component
     protected $listeners = ['recordChanged' => 'refreshRecord'];
     public Collection $departamentos;
 
+    protected $rules = [
+        'puesto.nombre' => 'required|string|min:3',
+        'puesto.riesgo' => 'required|string',
+        'puesto.salario_minimo' => 'required',
+        'puesto.salario_maximo' => 'required',
+        'puesto.departamento_id' => 'required',
+        'puesto.activo' => 'nullable|boolean',
+    ];
 
     public function render()
     {
@@ -26,6 +34,10 @@ class PuestoForm extends Component
 
     public function save()
     {
+        if (is_null($this->puesto->departamento_id)) {
+            $this->puesto->departamento_id = $this->departamentos->first()->id;
+        }
+
         $this->validate();
 
         if ($this->puesto->save()) {

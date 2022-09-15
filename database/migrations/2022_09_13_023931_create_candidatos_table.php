@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('candidatos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('persona_id')->constrained('personas')
+            $table->foreignId('persona_id')->unique()->constrained('personas')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreignId('puesto_id')->constrained('puestos')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->double('salario_deseado', 8, 2);
-            $table->string('recomendado_por');
+            $table->string('recomendado_por')->nullable();
             $table->timestamps();
         });
     }

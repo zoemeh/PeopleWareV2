@@ -9,6 +9,11 @@ class Puesto extends Model
 {
     use HasFactory;
 
+    protected $attributes = [
+        'activo' => false,
+        'riesgo' => 'bajo',
+    ];
+
     public function departamento()
     {
         return $this->belongsTo(Departamento::class);

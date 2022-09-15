@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Livewire\SimpleTable;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\SimpleTabe;
+use App\Models\Idioma;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +25,4 @@ Route::resource('/departamentos', App\Http\Controllers\DepartamentoController::c
 Route::resource('/puestos', App\Http\Controllers\PuestoController::class)->middleware('auth');
 Route::resource('/candidatos', App\Http\Controllers\CandidatoController::class)->middleware('auth');
 Route::resource('/empleados', App\Http\Controllers\EmpleadoController::class)->middleware('auth');
+Route::get("/boom", App\Http\Livewire\SimpleTable::class)->setDefaults([ 'records' => Idioma::all(), 'currentRecord' => new Idioma()]);
