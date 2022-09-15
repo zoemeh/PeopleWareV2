@@ -31,11 +31,12 @@
                                 </label>
                                 <input type="text" id="salario" name="salario" wire:model="empleado.salario"
                                     class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
-                                <label for="desde" class="block text-sm font-medium mb-2 dark:text-white"><Desde></Desde>
+                                <label for="desde" class="block text-sm font-medium mb-2 dark:text-white">Desde
                                 </label>
                                 <input type="date" id="desde" name="desde" wire:model="empleado.desde"
                                     class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
-                                <div class="flex mb-2">
+                                
+                                    <div class="flex mb-2">
                                     <input type="checkbox" id="activo" name="activo" wire:model="empleado.activo"
                                         class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
                                     <label for="activo" class="text-sm text-gray-500 ml-3 dark:text-gray-400">Estado

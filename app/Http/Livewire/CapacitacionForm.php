@@ -17,6 +17,9 @@ class CapacitacionForm extends Component
     protected $rules = [
         'capacitacion.descripcion' => 'required|string|min:3',
         'capacitacion.nivel' => 'required',
+        'capacitacion.desde' => 'required|date',
+        'capacitacion.hasta' => 'nullable|date',
+        'capacitacion.institucion' => 'required|string',
     ];
 
     public function mount()
@@ -26,6 +29,12 @@ class CapacitacionForm extends Component
     
     public function save()
     {
+        if (is_null($this->capacitacion->nivel)) {
+            $this->capacitacion->nivel = "grado";
+        }
+        if (is_null($this->capacitacion->persona_id)) {
+            $this->capacitacion->persona_id = $this->personas->first()->id;
+        }
         $this->validate();
 
         if ($this->capacitacion->save()) {

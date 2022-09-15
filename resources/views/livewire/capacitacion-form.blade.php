@@ -24,10 +24,9 @@
                                     wire:model="capacitacion.descripcion"
                                     class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
 
-                                <label for="empleado_id"
-                                    class="block text-sm font-medium mb-2 dark:text-white">Empleado</label>
-                                <select id="empleado_id" name="empleado_id"
-                                    wire:model="capacitacion.empleado_id"
+                                <label for="persona_id"
+                                    class="block text-sm font-medium mb-2 dark:text-white">Persona</label>
+                                <select id="persona_id" name="persona_id" wire:model="capacitacion.persona_id"
                                     class="mb-4 py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
                                     @foreach ($personas as $persona)
                                         <option value="{{ $persona->id }}">{{ $persona->nombre }}
@@ -43,6 +42,21 @@
                                         <option value="{{ $nivel }}">{{ str($nivel)->headline() }}</option>
                                     @endforeach
                                 </select>
+
+                                <label for="desde" class="block text-sm font-medium mb-2 dark:text-white">Desde
+                                </label>
+                                <input type="date" id="desde" name="desde" wire:model="capacitacion.desde"
+                                    class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                <label for="hasta" class="block text-sm font-medium mb-2 dark:text-white">Hasta
+                                </label>
+                                <input type="date" id="hasta" name="desde" wire:model="capacitacion.hasta"
+                                    class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                <label for="institucion"
+                                    class="block text-sm font-medium mb-2 dark:text-white">Institución</label>
+                                <input type="text" id="institucion" name="institucion"
+                                    wire:model="capacitacion.institucion"
+                                    class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+
                                 <button type="submit"
                                     class="mb-2 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
                                     @if ($capacitacion->id)

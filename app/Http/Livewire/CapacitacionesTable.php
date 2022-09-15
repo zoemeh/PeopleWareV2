@@ -23,6 +23,7 @@ class CapacitacionesTable extends Component
     
     public function render()
     {
+        $this->capacitaciones = Capacitacion::orderBy('id')->get();
         return view('livewire.capacitaciones-table');
     }
 
