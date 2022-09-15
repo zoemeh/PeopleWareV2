@@ -6,8 +6,8 @@
             <h3 class="inline-flex grow mt-1 text-lg text-gray-500 dark:text-gray-500">
                 Empleados
             </h3>
-            <button wire:click="create"
-                class="flex-none py-3 px-4  justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm dark:focus:ring-gray-900 dark:focus:ring-offset-gray-800">
+            <button disabled
+                class="cursor-not-allowed flex-none py-3 px-4  justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm dark:focus:ring-gray-900 dark:focus:ring-offset-gray-800">
                 Crear
             </button>
         </div>

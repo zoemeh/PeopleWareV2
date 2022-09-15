@@ -18,4 +18,21 @@ class Candidato extends Model
     {
         return $this->belongsTo(Persona::class);
     }
+
+    public function contratar($salario = null, $desde = null)
+    {
+        $salario = !is_null($salario) ? $salario : $this->salario_deseado;
+        $desde = !is_null($desde) ? $desde : now();
+
+        if (is_null($this->puesto->empleado_id)) {
+            $empleado = Empleado::firstOrNew(
+                ['persona_id' => $this->persona_id],
+            );
+            $empleado->persona_id = $this->persona_id;
+            $empleado->salario = $salario;
+            $empleado->desde = $desde;
+            $empleado->save();
+            return $this->puesto->contratar($empleado);
+        }
+    }
 }

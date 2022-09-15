@@ -20,10 +20,16 @@ class CandidatoSeeder extends Seeder
         DB::table('candidatos')->insert([
             'persona_id' => Persona::orderBy("id")->first()->id,
             'puesto_id' => Puesto::orderBy("id")->first()->id,
-            'salario_deseado' => 50000,
+            'salario_deseado' => 52000,
             'recomendado_por' => '',
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        Puesto::all()->each(function ($p) {
+            if (!is_null($p->candidatos->first())) {
+                $p->candidatos->first()->contratar();
+            }
+        });
     }
 }

@@ -18,4 +18,13 @@ class Empleado extends Model
     {
         return $this->hasOne(Puesto::class);
     }
+
+    protected static function booted()
+    {
+        static::deleting(function ($empleado) {
+            $p = $empleado->puesto;
+            $p->empleado_id = null;
+            $p->save();
+        });
+    }
 }

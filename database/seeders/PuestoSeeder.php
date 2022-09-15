@@ -5,9 +5,10 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
-
 use App\Models\Departamento;
+use App\Models\Candidato;
+use App\Models\Empleado;
+use App\Models\Puesto;
 
 class PuestoSeeder extends Seeder
 {

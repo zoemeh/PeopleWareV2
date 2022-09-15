@@ -28,4 +28,10 @@ class Puesto extends Model
     {
         return $this->belongsTo(Empleado::class);
     }
+
+    public function contratar($empleado)
+    {
+        $this->empleado_id = $empleado->id;
+        return $this->save();
+    }
 }
