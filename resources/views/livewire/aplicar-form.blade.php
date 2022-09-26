@@ -42,6 +42,8 @@
                                     class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
 
                                 <ul class="max-w-sm flex flex-col mb-4">
+                                    <h3 class="mb-4 text-lg font-bold">Idiomas</h3>
+
                                     @foreach ($idiomas as $idioma)
                                         <li
                                             class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white">
@@ -59,6 +61,8 @@
                                         </li>
                                     @endforeach
                                 </ul>
+                                <h3 class="mb-4 text-lg font-bold">Competencias</h3>
+
                                 <ul class="max-w-sm flex flex-col mb-4">
                                     @foreach ($competencias as $competencia)
                                         <li
@@ -77,6 +81,30 @@
                                         </li>
                                     @endforeach
                                 </ul>
+                                <h3 class="mb-4 text-lg font-bold">Capacitaciones</h3>
+                                @foreach ($capacitaciones as $capacitacion)
+                                    <div
+                                        class=" my-4 flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400">
+                                        <livewire:candidato-capacitacion :capacitacion="$capacitacion" :index="$loop->index"
+                                            wire:key="cap-{{ $loop->index }}" />
+                                    </div>
+                                @endforeach
+                                <button type="button" wire:click="agregar_capacitacion"
+                                    class="mb-4 mx-2 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                    Agregar capacitacion
+                                </button>
+                                <h3 class="mb-4 text-lg font-bold">Experencia</h3>
+                                @foreach ($experiencias as $experiencia)
+                                    <div
+                                        class=" my-4 flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400">
+                                        <livewire:candidato-experiencia :experiencia="$experiencia" :index="$loop->index"
+                                            wire:key="exp-{{ $loop->index }}" />
+                                    </div>
+                                @endforeach
+                                <button type="button" wire:click="agregar_experiencia"
+                                    class="mb-4 mx-2 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                    Agregar Experiencia
+                                </button>
                                 <button type="submit"
                                     class="mb-2 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
                                     Aplicar
