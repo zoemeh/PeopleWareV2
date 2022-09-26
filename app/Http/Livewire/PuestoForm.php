@@ -16,9 +16,9 @@ class PuestoForm extends Component
     protected $rules = [
         'puesto.nombre' => 'required|string|min:3',
         'puesto.riesgo' => 'required|string',
-        'puesto.salario_minimo' => 'required',
-        'puesto.salario_maximo' => 'required',
-        'puesto.departamento_id' => 'required',
+        'puesto.salario_minimo' => 'required|numeric:lte:salario_maximo',
+        'puesto.salario_maximo' => 'required|numeric',
+        'puesto.departamento_id' => 'required|numeric',
         'puesto.activo' => 'nullable|boolean',
     ];
 

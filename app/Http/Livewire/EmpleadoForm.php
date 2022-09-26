@@ -16,10 +16,10 @@ class EmpleadoForm extends Component
 
 
     protected $rules = [
-        'empleado.persona_id' => 'required',
+        'empleado.persona_id' => 'required|numeric',
         'empleado.desde' => 'required|date',
         'empleado.activo' => 'nullable|boolean',
-        'empleado.salario' => 'required',
+        'empleado.salario' => 'required|numeric',
     ];
 
     public function mount()

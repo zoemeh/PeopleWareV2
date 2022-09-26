@@ -17,8 +17,8 @@ class CapacitacionForm extends Component
     protected $rules = [
         'capacitacion.descripcion' => 'required|string|min:3',
         'capacitacion.nivel' => 'required',
-        'capacitacion.desde' => 'required|date',
-        'capacitacion.hasta' => 'nullable|date',
+        'capacitacion.desde' => 'required|date|before:hasta',
+        'capacitacion.hasta' => 'nullable|date|after:desde',
         'capacitacion.institucion' => 'required|string',
     ];
 

@@ -11,7 +11,7 @@ class PersonaForm extends Component
     protected $listeners = ['recordChanged' => 'refreshRecord'];
     protected $rules = [
         'persona.nombre' => 'required|string',
-        'persona.cedula' => 'required|string',
+        'persona.cedula' => 'required|alpha_num',
     ];
     public function render()
     {

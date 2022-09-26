@@ -18,9 +18,9 @@ class CandidatoForm extends Component
 
 
     protected $rules = [
-        'candidato.persona_id' => 'required',
-        'candidato.salario_deseado' => 'required',
-        'candidato.puesto_id' => 'required',
+        'candidato.persona_id' => 'required|integer',
+        'candidato.salario_deseado' => 'required|numeric',
+        'candidato.puesto_id' => 'required|numeric',
         'candidato.recomendado_por' => 'nullable|string',
     ];
 
