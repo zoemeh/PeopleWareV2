@@ -18,6 +18,7 @@ use App\Models\Idioma;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/aplicar/{puesto}', [App\Http\Controllers\HomeController::class, 'aplicar'])->name('aplicar');
 Route::resource('/competencias', App\Http\Controllers\CompetenciaController::class)->middleware('auth');
 Route::resource('/idiomas', App\Http\Controllers\IdiomaController::class)->middleware('auth');
 Route::resource('/capacitaciones', App\Http\Controllers\CapacitacionController::class)->middleware('auth');

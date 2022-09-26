@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('puestos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->text('descripcion');
             $table->enum('riesgo', ['bajo', 'medio', 'alto']);
             $table->double('salario_minimo', 8, 2);
             $table->double('salario_maximo', 8, 2);

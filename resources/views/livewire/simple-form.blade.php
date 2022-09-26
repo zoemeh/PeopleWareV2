@@ -1,5 +1,5 @@
 <div wire:poll>
-    <div wire
+    <div
         class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
         <div
             class=" flex bg-gray-100 border-b rounded-t-xl py-3 px-4 md:py-4 md:px-5 dark:bg-gray-800 dark:border-gray-700">
@@ -38,8 +38,7 @@
                                         Crear
                                     @endif
                                 </button>
-                                <button type="button"
-                                    wire:click="cancel";
+                                <button type="button" wire:click="cancel";
                                     class="mb-2 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
                                     Cancelar
                                 </button>
@@ -52,6 +51,4 @@
             </div>
         </div>
     </div>
-
-
 </div>

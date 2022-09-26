@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Puesto;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        Carbon::setLocale('es');
+        return view('home')->with("puestos", Puesto::orderBy("created_at")->get());
+    }
+
+    public function aplicar(Puesto $puesto)
+    {
+        return view('aplicar')->with('puesto', $puesto);
     }
 }

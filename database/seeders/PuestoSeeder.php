@@ -21,6 +21,7 @@ class PuestoSeeder extends Seeder
     {
         DB::table('puestos')->insert([
             'nombre' => 'Desarrollador Web',
+            'descripcion' => "Necesitamos un desarollador rockstar",
             'riesgo' => 'bajo',
             'salario_minimo' => 50000,
             'salario_maximo' => 70000,
@@ -31,6 +32,7 @@ class PuestoSeeder extends Seeder
          ]);
         DB::table('puestos')->insert([
             'nombre' => 'Analista de Sistemas',
+            'descripcion' => "Necesitamos un analista analisador",
             'riesgo' => 'bajo',
             'salario_minimo' => 50000,
             'salario_maximo' => 70000,
@@ -41,6 +43,7 @@ class PuestoSeeder extends Seeder
         ]);
         DB::table('puestos')->insert([
             'nombre' => 'Contador',
+            'descripcion' => "Necesitamos un amante de los numeros",
             'riesgo' => 'bajo',
             'salario_minimo' => 50000,
             'salario_maximo' => 70000,
