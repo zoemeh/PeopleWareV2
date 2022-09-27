@@ -111,4 +111,7 @@
     @if ($formVisible)
         <livewire:capacitacion-form :capacitacion="$currentCapacitacion" />
     @endif
+     @if ($showVisible)
+        <livewire:capacitacion-form :capacitacion="$currentCapacitacion" :show="true" />
+    @endif
 </div>

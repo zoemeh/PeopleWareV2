@@ -11,6 +11,7 @@ class CapacitacionForm extends Component
 {
     public Capacitacion $capacitacion;
     public Collection $personas;
+    public bool $show = false;
 
     protected $listeners = ['recordChanged' => 'refreshRecord'];
 

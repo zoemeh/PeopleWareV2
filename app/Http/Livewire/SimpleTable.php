@@ -11,9 +11,10 @@ class SimpleTable extends Component
     public array $columns;
     public string $resource;
     public bool $formVisible = false;
+    public bool $showVisible = false;
     public $currentRecord;
 
-    protected $listeners = ['recordChanged' => '$refresh', 'recordSaved' => 'recordSaved', 'closeForm' => 'closeForm'];
+    protected $listeners = ['recordChanged' => '$refresh', 'recordSaved' => 'recordSaved', 'closeForm' => 'closeForm', 'closeShow' => 'closeShow'];
 
     public function render()
     {
@@ -47,12 +48,18 @@ class SimpleTable extends Component
 
     public function show($id)
     {
-        $record = $this->currentRecord::class::find($id);
-        return redirect()->route("$this->resource.show", $id);
+        $this->currentRecord = $this->currentRecord::class::find($id);
+        $this->emit("recordChanged", $this->currentRecord->id);
+        $this->formVisible = false;
+        $this->showVisible = true;
     }
 
     public function closeForm()
     {
         $this->formVisible = false;
+    }
+    public function closeShow()
+    {
+        $this->showVisible = false;
     }
 }

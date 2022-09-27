@@ -12,15 +12,18 @@ class CapacitacionesTable extends Component
     public bool $formVisible = false;
     public Capacitacion $currentCapacitacion;
     public Collection $capacitaciones;
+    public bool $showVisible = false;
 
-    protected $listeners = ['recordChanged' => '$refresh', 'recordSaved' => 'recordSaved', 'closeForm' => 'closeForm'];
-    
 
-    public function mount() {
+    protected $listeners = ['recordChanged' => '$refresh', 'recordSaved' => 'recordSaved', 'closeForm' => 'closeForm', 'closeShow' => 'closeShow'];
+
+
+    public function mount()
+    {
         $this->currentCapacitacion = new Capacitacion();
         $this->capacitaciones = Capacitacion::orderBy("created_at")->get();
     }
-    
+
     public function render()
     {
         $this->capacitaciones = Capacitacion::orderBy('id')->get();
@@ -53,11 +56,20 @@ class CapacitacionesTable extends Component
 
     public function show($id)
     {
-        return redirect()->route("capacitacion.show", $id);
+        $this->currentCapacitacion = Capacitacion::find($id);
+        $this->emit("recordChanged", $this->currentCapacitacion->id);
+        $this->formVisible = false;
+        $this->showVisible = true;
     }
 
     public function closeForm()
     {
+        $this->showVisible = false;
         $this->formVisible = false;
+    }
+
+    public function closeShow()
+    {
+        $this->showVisible = false;
     }
 }

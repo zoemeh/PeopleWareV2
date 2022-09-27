@@ -15,32 +15,48 @@
                         <div class="overflow-hidden">
                             <form wire:submit.prevent="save">
                                 @csrf
-                                <label for="cedula"
-                                    class="block text-sm font-medium mb-2 dark:text-white">Cédula</label>
-                                <input type="text" id="cedula" name="cedula"
-                                    class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
-
                                 <label for="nombre"
                                     class="block text-sm font-medium mb-2 dark:text-white">Nombre</label>
-                                <input type="text" id="nombre" name="nombre"
+                                <input type="text" id="nombre" name="nombre" wire:model="persona.nombre"
                                     class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
-
-                                <label for="puesto"
+                                @error('persona.nombre')
+                                    <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
+                                @enderror
+                                <label for="cedula"
+                                    class="block text-sm font-medium mb-2 dark:text-white">Cédula</label>
+                                <input type="text" id="cedula" name="cedula" wire:model="persona.cedula"
+                                    class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                @error('persona.cedula')
+                                    <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
+                                @enderror
+                                <label for="puesto_id"
                                     class="block text-sm font-medium mb-2 dark:text-white">Puesto</label>
-                                <input type="text" id="puesto" name="puesto"
-                                    class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
-
+                                <select id="puesto_id" name="puesto_id" wire:model="candidato.puesto_id" readonly
+                                    class="mb-4 py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                    <option value="{{ $puesto->id }}">{{ $puesto->nombre }}
+                                    </option>
+                                </select>
+                                @error('candidato.puesto_id')
+                                    <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
+                                @enderror
                                 <label for="salario_deseado"
                                     class="block text-sm font-medium mb-2 dark:text-white">Salario Deseado</label>
                                 <input type="text" id="salario_deseado" name="salario_deseado"
+                                    wire:model="candidato.salario_deseado"
                                     class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
-
-
+                                @error('candidato.salario_deseado')
+                                    <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
+                                @enderror
                                 <label for="recomendado_por"
-                                    class="block text-sm font-medium mb-2 dark:text-white">Recomendado por</label>
+                                    class="block text-sm font-medium mb-2 dark:text-white">Recomendado Por</label>
                                 <input type="text" id="recomendado_por" name="recomendado_por"
+                                    wire:model="candidato.recomendado_por"
                                     class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                @error('candidato.recomendado_por')
+                                    <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
+                                @enderror
 
+                                
                                 <ul class="max-w-sm flex flex-col mb-4">
                                     <h3 class="mb-4 text-lg font-bold">Idiomas</h3>
 
@@ -49,8 +65,8 @@
                                             class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white">
                                             <div class="relative flex items-start w-full">
                                                 <div class="flex items-center h-5">
-                                                    <input id="idioma-{{ $idioma->id }}"
-                                                        name="idioma-{{ $idioma->id }}" type="checkbox"
+                                                    <input id="idioma[]"
+                                                        value="{{$idioma->id}}" type="checkbox" wire:model="idiomas_seleccionados"
                                                         class="border-gray-200 rounded dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
                                                 </div>
                                                 <label for="hs-list-group-item-checkbox-1"
@@ -70,7 +86,7 @@
                                             <div class="relative flex items-start w-full">
                                                 <div class="flex items-center h-5">
                                                     <input id="competencia-{{ $competencia->id }}"
-                                                        name="competencia-{{ $competencia->id }}" type="checkbox"
+                                                        wire:model="competencias_seleccionadas" type="checkbox" value="{{$competencia->id}}"
                                                         class="border-gray-200 rounded dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
                                                 </div>
                                                 <label for="hs-list-group-item-checkbox-1"

@@ -72,4 +72,7 @@
     @if ($formVisible)
         <livewire:simple-form :record="$currentRecord" :resource="$resource" />
     @endif
+    @if ($showVisible)
+        <livewire:simple-show :record="$currentRecord" :resource="$resource" />
+    @endif
 </div>

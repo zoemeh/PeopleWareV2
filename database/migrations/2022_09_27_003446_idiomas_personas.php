@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('competencia_persona', function (Blueprint $table) {
+        Schema::create('idioma_persona', function (Blueprint $table) {
             $table->id();
             $table->foreignId('persona_id')->constrained('personas')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreignId('competencia_id')->constrained('competencias')
+            $table->foreignId('idioma_id')->constrained('idiomas')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->timestamps();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('competencia_persona');
+        Schema::dropIfExists('idioma_persona');
     }
 };

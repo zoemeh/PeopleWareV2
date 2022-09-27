@@ -13,7 +13,11 @@ class Persona extends Model
     {
         return $this->belongsToMany(Competencia::class);
     }
-
+    public function idiomas()
+    {
+        return $this->belongsToMany(Idioma::class);
+    }
+    
     public function empleado()
     {
         return $this->hasOne(Empleado::class);
@@ -28,4 +32,6 @@ class Persona extends Model
     {
         return $this->hasMany(Experiencia::class);
     }
+
+    
 }

@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/aplicar/{puesto}', [App\Http\Controllers\HomeController::class, 'aplicar'])->name('aplicar');
+
 Route::resource('/competencias', App\Http\Controllers\CompetenciaController::class)->middleware('auth');
 Route::resource('/idiomas', App\Http\Controllers\IdiomaController::class)->middleware('auth');
 Route::resource('/capacitaciones', App\Http\Controllers\CapacitacionController::class)->middleware('auth');
@@ -27,4 +28,3 @@ Route::resource('/puestos', App\Http\Controllers\PuestoController::class)->middl
 Route::resource('/candidatos', App\Http\Controllers\CandidatoController::class)->middleware('auth');
 Route::resource('/empleados', App\Http\Controllers\EmpleadoController::class)->middleware('auth');
 Route::resource('/personas', App\Http\Controllers\PersonaController::class)->middleware('auth');
-Route::get("/boom", App\Http\Livewire\SimpleTable::class)->setDefaults([ 'records' => Idioma::all(), 'currentRecord' => new Idioma()]);

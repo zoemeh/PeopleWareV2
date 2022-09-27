@@ -15,7 +15,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -32,5 +31,10 @@ class HomeController extends Controller
     public function aplicar(Puesto $puesto)
     {
         return view('aplicar')->with('puesto', $puesto);
+    }
+
+    public function perfil()
+    {
+        return view('perfil');
     }
 }
