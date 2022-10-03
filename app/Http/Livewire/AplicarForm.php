@@ -12,6 +12,7 @@ use App\Models\Puesto;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 use App\Models\User;
+use App\Rules\Cedula;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,16 +36,21 @@ class AplicarForm extends Component
         'recordChanged' => '$refresh', 'eliminarExperiencia' => "eliminarExperiencia", "eliminarCapacitacion" => "eliminarCapacitacion",
         "replyValidarCapacitacion" => "replyValidarCapacitacion", "replyValidarExperiencia" => "replyValidarExperiencia"
     ];
-    protected $rules = [
-        'candidato.persona_id' => 'required|integer',
-        'candidato.salario_deseado' => 'required|numeric',
-        'candidato.puesto_id' => 'required|numeric',
-        'candidato.recomendado_por' => 'nullable|string',
-        'persona.nombre' => 'required|string',
-        'persona.cedula' => 'required|alpha_num',
-        'idiomas_seleccionados' => 'nullable',
-        'competencias_seleccionadas' => 'nullable'
-    ];
+
+    protected function rules()
+    {
+        return
+            [
+                'candidato.persona_id' => 'required|integer',
+                'candidato.salario_deseado' => 'required|numeric',
+                'candidato.puesto_id' => 'required|numeric',
+                'candidato.recomendado_por' => 'nullable|string',
+                'persona.nombre' => 'required|string',
+                'persona.cedula' => ['required', new Cedula],
+                'idiomas_seleccionados' => 'nullable',
+                'competencias_seleccionadas' => 'nullable'
+            ];
+    }
 
     public function mount()
     {

@@ -9,6 +9,8 @@ use Livewire\Component;
 class ProcesoForm extends Component
 {
     public Puesto $puesto;
+    public Candidato $candidato_seleccionado;
+    public $salario;
     public function render()
     {
         return view('livewire.proceso-form');
@@ -17,8 +19,12 @@ class ProcesoForm extends Component
     public function seleccionar($id)
     {
         if (is_null($this->puesto->empleado)) {
-            $candidato = Candidato::find($id);
-            $candidato->contratar($candidato->salario_deseado, now());
+            $this->candidato_seleccionado = Candidato::find($id);
         }
+    }
+
+    public function contratar()
+    {
+        $this->candidato_seleccionado->contratar($this->salario, now());
     }
 }

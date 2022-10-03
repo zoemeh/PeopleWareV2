@@ -12,6 +12,7 @@ class Puesto extends Model
     protected $attributes = [
         'activo' => false,
         'riesgo' => 'bajo',
+        'descripcion' => ''
     ];
 
     public function departamento()
