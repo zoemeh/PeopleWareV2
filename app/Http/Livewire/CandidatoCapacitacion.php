@@ -9,7 +9,7 @@ class CandidatoCapacitacion extends Component
 {
     public Capacitacion $capacitacion;
     public int $index;
-    protected $listeners = ['validar' => 'validar', "saveWithPersona"];
+    protected $listeners = ['validar' => 'validar', "saveWithPersona" => "saveWithPersona"];
 
     protected $rules = [
         'capacitacion.descripcion' => 'required|string|min:3',

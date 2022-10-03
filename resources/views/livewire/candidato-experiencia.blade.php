@@ -27,10 +27,10 @@
         <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
     @enderror
     <label for="salario[]" class="block text-sm font-medium mb-2 dark:text-white">Salario</label>
-    <input type="text" id="salario[]" name="salario[]" wire:model="experiencia.salario"
+    <input id="salario[]" name="salario[]" wire:model="experiencia.salario" type="number" step="0.1"
         class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
 
-    @error('<experiencia class="salariox"></experiencia>')
+    @error('experiencia.salario')
         <p class="text-sm text-red-600 mt-2">{{ $message }}</p>
     @enderror
     <button type="button" wire:click="eliminar"

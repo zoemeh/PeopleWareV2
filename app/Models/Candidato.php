@@ -31,7 +31,10 @@ class Candidato extends Model
             $empleado->persona_id = $this->persona_id;
             $empleado->salario = $salario;
             $empleado->desde = $desde;
+            $empleado->activo = true;
             $empleado->save();
+            $this->puesto->activo = false;
+            $this->puesto->save();
             return $this->puesto->contratar($empleado);
         }
     }

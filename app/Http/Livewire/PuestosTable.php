@@ -59,4 +59,9 @@ class PuestosTable extends Component
     {
         $this->formVisible = false;
     }
+
+    public function proceso($id)
+    {
+        return redirect()->route("puestos.proceso", $id);
+    }
 }

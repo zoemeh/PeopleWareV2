@@ -6,10 +6,12 @@
             <h3 class="inline-flex grow mt-1 text-lg text-gray-500 dark:text-gray-500">
                 {{ str($resource)->headline() }}
             </h3>
-            <button wire:click="create"
-                class="flex-none py-3 px-4  justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm dark:focus:ring-gray-900 dark:focus:ring-offset-gray-800">
-                Crear
-            </button>
+            @if (!$perfil)
+                <button wire:click="create"
+                    class="flex-none py-3 px-4  justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm dark:focus:ring-gray-900 dark:focus:ring-offset-gray-800">
+                    Crear
+                </button>
+            @endif
         </div>
         <div class="p-4 md:p-5">
             <div class="flex flex-col">
@@ -24,9 +26,11 @@
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                                                 {{ $c }}</th>
                                         @endforeach
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                        </th>
+                                        @if (!$perfil)
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                            </th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -42,22 +46,23 @@
                                                     @endif
                                                 </td>
                                             @endforeach
+                                            @if (!$perfil)
+                                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                    <div class="btn-group" role="group">
+                                                        <button type="button"
+                                                            class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                                                            wire:click="show({{ $r->id }})">Ver</button>
+                                                        <button type="button"
+                                                            class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                                                            wire:click="update({{ $r->id }})">Editar</button>
+                                                        <button
+                                                            class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-red-500 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                                                            wire:click="$emit('confirmDelete', {{ $r->id }}, '{{ json_encode($r::class) }}', '{{ $r->descripcion }}', )"
+                                                            type="button">Borrar</button>
 
-                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <div class="btn-group" role="group">
-                                                    <button type="button"
-                                                        class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                                                        wire:click="show({{ $r->id }})">Ver</button>
-                                                    <button type="button"
-                                                        class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                                                        wire:click="update({{ $r->id }})">Editar</button>
-                                                    <button
-                                                        class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-red-500 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                                                        wire:click="$emit('confirmDelete', {{ $r->id }}, '{{ json_encode($r::class) }}', '{{ $r->descripcion }}', )"
-                                                        type="button">Borrar</button>
-
-                                                </div>
-                                            </td>
+                                                    </div>
+                                                </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 </tbody>

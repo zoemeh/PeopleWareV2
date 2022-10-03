@@ -13,12 +13,15 @@ class SimpleTable extends Component
     public bool $formVisible = false;
     public bool $showVisible = false;
     public $currentRecord;
+    public bool $perfil = false;
 
     protected $listeners = ['recordChanged' => '$refresh', 'recordSaved' => 'recordSaved', 'closeForm' => 'closeForm', 'closeShow' => 'closeShow'];
 
     public function render()
     {
-        $this->records = $this->currentRecord::class::orderBy('id')->get();
+        if (!$this->perfil) {
+            $this->records = $this->currentRecord::class::orderBy('id')->get();
+        }
         return view('livewire.simple-table')->with("records", $this->records);
     }
 

@@ -18,6 +18,11 @@ class Persona extends Model
         return $this->belongsToMany(Idioma::class);
     }
     
+
+    public function candidato()
+    {
+        return $this->hasOne(Candidato::class);
+    }
     public function empleado()
     {
         return $this->hasOne(Empleado::class);

@@ -33,14 +33,14 @@
                                 <label for="salario_minimo"
                                     class="block text-sm font-medium mb-2 dark:text-white">Salario
                                     Minimo</label>
-                                <input type="text" id="salario_minimo" name="salario_minimo"
+                                <input id="salario_minimo" name="salario_minimo" type="number" step="0.1"
                                     wire:model="puesto.salario_minimo"
                                     class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
 
                                 <label for="salario_maximo"
                                     class="block text-sm font-medium mb-2 dark:text-white">Salario
                                     Máximo</label>
-                                <input type="text" id="salario_maximo" name="salario_maximo"
+                                <input id="salario_maximo" name="salario_maximo" type="number" step="0.1"
                                     wire:model="puesto.salario_maximo"
                                     class="mb-2 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
 

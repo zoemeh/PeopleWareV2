@@ -18,6 +18,11 @@ class PuestoController extends Controller
         return view('puesto.index')->with('puestos', Puesto::orderBy("created_at")->get());
     }
 
+    public function proceso(Puesto $puesto)
+    {
+        return view('puesto.proceso')->with('puesto', $puesto);
+    }
+    
     /**
      * Show the form for creating a new resource.
      *

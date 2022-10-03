@@ -20,28 +20,37 @@
 </head>
 
 <body class="dark:bg-gray-800">
-    @livewire('livewire-ui-modal')
     <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4 dark:bg-gray-800">
         <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
             <a class="flex-none text-xl font-semibold" href="{{ route('home') }}">PeopleWare</a>
             <div class="flex flex-row items-center gap-5 mt-5 sm:justify-end sm:mt-0 sm:pl-5">
-                <a class="font-medium {{ request()->routeIs('competencias.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
-                    href="{{ route('competencias.index') }}" aria-current="page">Competencias
-                </a>
-                <a class="font-medium {{ request()->routeIs('idiomas.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
-                    href="{{ route('idiomas.index') }}">Idiomas</a>
-                <a class="font-medium {{ request()->routeIs('capacitaciones.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
-                    href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
-                <a class="font-medium {{ request()->routeIs('departamentos.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
-                    href="{{ route('departamentos.index') }}">Departamentos</a>
-                <a class="font-medium {{ request()->routeIs('puestos.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
-                    href="{{ route('puestos.index') }}">Puestos</a>
-                <a class="font-medium {{ request()->routeIs('personas.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
-                    href="{{ route('personas.index') }}">Personas</a>
-                <a class="font-medium {{ request()->routeIs('candidatos.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
-                    href="{{ route('candidatos.index') }}">Candidatos</a>
-                <a class="font-medium {{ request()->routeIs('empleados.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
-                    href="{{ route('empleados.index') }}">Empleados</a>
+                @if (!is_null(Auth::user()) && Auth::user()->role == 'admin')
+                    <a class="font-medium {{ request()->routeIs('competencias.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                        href="{{ route('competencias.index') }}" aria-current="page">Competencias
+                    </a>
+                    <a class="font-medium {{ request()->routeIs('idiomas.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                        href="{{ route('idiomas.index') }}">Idiomas</a>
+                    <a class="font-medium {{ request()->routeIs('capacitaciones.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                        href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
+                    <a class="font-medium {{ request()->routeIs('departamentos.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                        href="{{ route('departamentos.index') }}">Departamentos</a>
+                    <a class="font-medium {{ request()->routeIs('puestos.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                        href="{{ route('puestos.index') }}">Puestos</a>
+                    <a class="font-medium {{ request()->routeIs('personas.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                        href="{{ route('personas.index') }}">Personas</a>
+                    <a class="font-medium {{ request()->routeIs('candidatos.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                        href="{{ route('candidatos.index') }}">Candidatos</a>
+                    <a class="font-medium {{ request()->routeIs('empleados.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                        href="{{ route('empleados.index') }}">Empleados</a>
+                    <a class="font-medium {{ request()->routeIs('usuarios.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                        href="{{ route('usuarios.index') }}">Usuarios</a>
+                    <a class="font-medium {{ request()->routeIs('usuarios.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                        href="{{ route('usuarios.index') }}">{{ Auth::user() ? Auth::user()->name : '' }}</a>
+                    <a class="font-medium {{ request()->routeIs('reportes.index') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                        href="{{ route('reportes.index') }}">Reportes</a>
+                @endif
+                <a class="font-medium {{ request()->routeIs('homelogout') ? 'text-blue-500' : 'text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500' }}"
+                    href="{{ route('homelogout') }}">Salir</a>
             </div>
         </nav>
     </header>

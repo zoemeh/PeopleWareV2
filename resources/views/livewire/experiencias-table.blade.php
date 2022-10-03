@@ -5,7 +5,7 @@
         <div
             class=" flex bg-gray-100 border-b rounded-t-xl py-3 px-4 md:py-4 md:px-5 dark:bg-gray-800 dark:border-gray-700">
             <h3 class="inline-flex grow mt-1 text-lg text-gray-500 dark:text-gray-500">
-                Capacitaciones
+                Experiencias
             </h3>
             @if (!$perfil)
                 <button wire:click="create"
@@ -24,19 +24,11 @@
                                     <tr>
                                         <th scope="col"
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                            ID
+                                            Empresa
                                         </th>
                                         <th scope="col"
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                            Empleado
-                                        </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                            Descripcion
-                                        </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                            Nivel
+                                            Puesto Coupado
                                         </th>
                                         <th scope="col"
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
@@ -48,7 +40,7 @@
                                         </th>
                                         <th scope="col"
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                            Institucion
+                                            Salario
                                         </th>
                                         @if (!$perfil)
                                             <th scope="col"
@@ -58,53 +50,28 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                    @foreach ($capacitaciones as $capacitacion)
+                                    @foreach ($experiencias as $experiencia)
                                         <tr>
                                             <td
                                                 class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">
-                                                {{ $capacitacion->id }}
+                                                {{ $experiencia->empresa }}
                                             </td>
                                             <td
                                                 class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">
-                                                {{ $capacitacion->persona->nombre }}
+                                                {{ $experiencia->puesto }}
                                             </td>
                                             <td
                                                 class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">
-                                                {{ $capacitacion->descripcion }}
+                                                {{ $experiencia->desde }}
                                             </td>
                                             <td
                                                 class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">
-                                                {{ $capacitacion->nivel }}
+                                                {{ $experiencia->hasta }}
                                             </td>
                                             <td
                                                 class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">
-                                                {{ $capacitacion->desde }}
+                                                {{ $experiencia->salario }}
                                             </td>
-                                            <td
-                                                class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">
-                                                {{ $capacitacion->hasta }}
-                                            </td>
-                                            <td
-                                                class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">
-                                                {{ $capacitacion->institucion }}
-                                            </td>
-                                            @if (!$perfil)
-                                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <div class="btn-group" role="group">
-                                                        <button type="button"
-                                                            class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                                                            wire:click="show({{ $capacitacion->id }})">Ver</button>
-                                                        <button type="button"
-                                                            class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                                                            wire:click="update({{ $capacitacion->id }})">Editar</button>
-                                                        <button
-                                                            class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-red-500 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                                                            wire:click="$emit('confirmDelete', {{ $capacitacion->id }}, '{{ json_encode($capacitacion::class) }}', '{{ $capacitacion->descripcion }}', )"
-                                                            type="button">Borrar</button>
-                                                    </div>
-                                                </td>
-                                            @endif
-
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -116,9 +83,9 @@
         </div>
     </div>
     @if ($formVisible)
-        <livewire:capacitacion-form :capacitacion="$currentCapacitacion" />
+        <livewire:experiencia-form :experiencia="$currentCapacitacion" />
     @endif
     @if ($showVisible)
-        <livewire:capacitacion-form :capacitacion="$currentCapacitacion" :show="true" />
+        <livewire:experiencia-form :experiencia="$currentCapacitacion" :show="true" />
     @endif
 </div>

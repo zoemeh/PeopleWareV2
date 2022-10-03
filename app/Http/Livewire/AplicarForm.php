@@ -11,6 +11,10 @@ use App\Models\Persona;
 use App\Models\Puesto;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 class AplicarForm extends Component
 {
@@ -47,8 +51,8 @@ class AplicarForm extends Component
         $this->persona = new Persona();
         $this->candidato = new Candidato();
         $this->candidato->puesto_id = $this->puesto->id;
-        $this->idiomas = Idioma::orderBy("id")->get();
-        $this->competencias = Competencia::orderBy("id")->get();
+        $this->idiomas = Idioma::where("activo", true)->orderBy("id")->get();
+        $this->competencias = Competencia::where("activo", true)->orderBy("id")->get();
         $this->experiencias = new Collection();
         $this->capacitaciones = new Collection();
         $this->experiencias->push(new Experiencia());
@@ -123,6 +127,14 @@ class AplicarForm extends Component
             $this->persona->save();
             $this->candidato->save();
             $this->emit("saveWithPersona", $this->persona->id);
+            $user = User::create([
+                'name' => $this->persona->nombre,
+                'email' => $this->persona->cedula,
+                'role' => "candidato",
+                'password' => Hash::make($this->persona->cedula),
+            ]);
+            Auth::login($user);
+            return redirect()->to('/perfil');
         }
     }
 }

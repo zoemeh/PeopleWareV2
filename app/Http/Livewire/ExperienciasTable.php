@@ -2,59 +2,57 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Capacitacion;
+use App\Models\Experiencia;
 use App\Models\Persona;
 use Livewire\Component;
 use Illuminate\Database\Eloquent\Collection;
 
-class CapacitacionesTable extends Component
+class ExperienciasTable extends Component
 {
-
     public bool $formVisible = false;
-    public Capacitacion $currentCapacitacion;
-    public Collection $capacitaciones;
+    public Experiencia $currentExperiencia;
+    public Collection $experiencias;
     public bool $showVisible = false;
     public Persona $persona;
     public bool $perfil = false;
 
     protected $listeners = ['recordChanged' => '$refresh', 'recordSaved' => 'recordSaved', 'closeForm' => 'closeForm', 'closeShow' => 'closeShow'];
 
-
     public function mount()
     {
-        $this->currentCapacitacion = new Capacitacion();
-        if (!$this->perfil) {
-            $this->capacitaciones = Capacitacion::orderBy("created_at")->get();
+        $this->currentExperiencia = new Experiencia();
+        if (is_null($this->persona)) {
+            $this->experiencias = Experiencia::orderBy("created_at")->get();
         } else {
-            $this->capacitaciones = $this->persona->capacitaciones;
+            $this->experiencias = $this->persona->experiencias;
         }
     }
 
     public function render()
     {
         if (!$this->perfil) {
-            $this->capacitaciones = Capacitacion::orderBy('id')->get();
+            $this->experiencias = Experiencia::orderBy('id')->get();
         }
-        return view('livewire.capacitaciones-table');
+        return view('livewire.experiencias-table');
     }
 
     public function create()
     {
-        $this->currentCapacitacion =  new Capacitacion();
+        $this->currentExperiencia =  new Experiencia();
         $this->emit("recordChanged", -1);
         $this->formVisible = true;
     }
 
-    public function update(Capacitacion $capacitacion)
+    public function update(Experiencia $experiencia)
     {
-        $this->currentCapacitacion = $capacitacion;
+        $this->currentExperiencia = $experiencia;
         $this->formVisible = true;
-        $this->emit("recordChanged", $this->currentCapacitacion->id);
+        $this->emit("recordChanged", $this->currentExperiencia->id);
     }
 
     public function delete($id)
     {
-        $r = Capacitacion::find($id);
+        $r = Experiencia::find($id);
         $r->delete();
     }
     public function recordSaved()
@@ -64,8 +62,8 @@ class CapacitacionesTable extends Component
 
     public function show($id)
     {
-        $this->currentCapacitacion = Capacitacion::find($id);
-        $this->emit("recordChanged", $this->currentCapacitacion->id);
+        $this->currentExperiencia = Experiencia::find($id);
+        $this->emit("recordChanged", $this->currentExperiencia->id);
         $this->formVisible = false;
         $this->showVisible = true;
     }

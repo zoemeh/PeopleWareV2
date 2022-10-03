@@ -6,16 +6,80 @@
             <h3 class="inline-flex grow mt-1 text-lg text-gray-500 dark:text-gray-500">
                 Empleados
             </h3>
-            <button disabled
-                class="cursor-not-allowed flex-none py-3 px-4  justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm dark:focus:ring-gray-900 dark:focus:ring-offset-gray-800">
-                Crear
+            <button wire:click="openBuscar()"
+                class="flex-none py-3 px-4  justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm dark:focus:ring-gray-900 dark:focus:ring-offset-gray-800">
+                Buscar
             </button>
+
         </div>
         <div class="p-4 md:p-5">
             <div class="flex flex-col">
                 <div class="-m-1.5 overflow-x-auto">
                     <div class="p-1.5 min-w-full inline-block align-middle">
                         <div class="overflow-hidden">
+                            @if ($buscar)
+                                <div>
+                                    <label for="persona_id"
+                                        class="block text-sm font-medium mb-2 dark:text-white">Puesto</label>
+                                    <select id="puesto" wire:model="buscar_puesto"
+                                        class="mb-4 py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                        @foreach ($puestos as $puesto)
+                                            <option value="{{ $puesto->id }}">{{ $puesto->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    <div class="grid grid-cols-3 grid-gap-4 mb-4">
+                                        <div>
+                                            <label
+                                                class="block text-sm font-medium mb-2 dark:text-white">Idiomas</label>
+                                            @foreach ($idiomas as $idioma)
+                                                <ul class="max-w-sm flex flex-col">
+                                                    <li
+                                                        class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                                                        <div class="relative flex items-start w-full">
+                                                            <div class="flex items-center h-5">
+                                                                <input wire:model="buscar_idiomas" type="checkbox"
+                                                                    value="{{ $idioma->id }}"
+                                                                    class="border-gray-200 rounded dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
+                                                            </div>
+                                                            <label for="hs-list-group-item-checkbox-1"
+                                                                class="ml-3.5 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                {{ $idioma->descripcion }}
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            @endforeach
+                                        </div>
+
+                                        <div>
+                                            <label
+                                                class="block text-sm font-medium mb-2 dark:text-white">Competencias</label>
+                                            @foreach ($competencias as $competencia)
+                                                <ul class="max-w-sm flex flex-col">
+                                                    <li
+                                                        class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                                                        <div class="relative flex items-start w-full">
+                                                            <div class="flex items-center h-5">
+                                                                <input wire:model="buscar_competencias" type="checkbox"
+                                                                    value="{{ $competencia->id }}"
+                                                                    class="border-gray-200 rounded dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
+                                                            </div>
+                                                            <label for="hs-list-group-item-checkbox-1"
+                                                                class="ml-3.5 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                {{ $competencia->descripcion }}
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            @endforeach
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            @endif
                             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                 <thead>
                                     <tr>
